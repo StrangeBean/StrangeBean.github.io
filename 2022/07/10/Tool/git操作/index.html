@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Git命令 | Dou</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.1"><link rel="stylesheet" type="text/css" href="//fastly.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//fastly.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//fastly.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//fastly.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//fastly.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="/css/prettify.css"><script type="text/javascript" src="//fastly.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//fastly.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//fastly.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 6.2.0"></head><script async src="https://www.googletagmanager.com/gtag/js?id=null"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', '');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Git命令</h1><a id="logo" href="/.">Dou</a><p class="description">小屁豆儿的代码乐园</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user-secret"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">Git命令</h1><div class="post-meta">July 2022</div><div class="post-content"><h2 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h2><ol>
+<li><p>克隆代码： git clone <a target="_blank" rel="noopener" href="https://gitee.com/strangebean/dou.git">https://gitee.com/strangebean/dou.git</a> </p>
+</li>
+<li><p>初始化git仓库 ： git init</p>
+</li>
+<li><p>查看本地git管理状态：git status</p>
+</li>
+<li><p>添加文件到git管理：git add filename</p>
+<blockquote>
+<p>添加所有文件： git add .</p>
+</blockquote>
+</li>
+<li><p>提交文件：git commit -m “add new file” </p>
+</li>
+<li><p>查看提交信息： git log</p>
+</li>
+<li><p>查看当前分支： git branch </p>
+</li>
+<li><p>新建分支并切换到新分支： git checkout -b &lt;新分支名&gt;</p>
+</li>
+<li><p>切换分支：<br> 8.1 git switch &lt;目标分支名&gt;<br> 8.2 git checkout &lt;目标分支名&gt;</p>
+<blockquote>
+<p>git switch 为高版本支持的命令，低版本可能不支持</p>
+</blockquote>
+</li>
+<li><p>添加远程库：git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/strangebean/dou.git">https://gitee.com/strangebean/dou.git</a> </p>
+<blockquote>
+<p>origin: 远程仓库别名</p>
+</blockquote>
+</li>
+<li><p>查看远程库列表：git remote -v</p>
+</li>
+<li><p>修改远程库别名 git remote rename oldName newName</p>
+</li>
+<li><p>获取远程仓库代码到本地（不合并）： git fetch origin</p>
+</li>
+<li><p>合并远程dev分支到本地分支：git rebase origin&#x2F;dev</p>
+</li>
+<li><p>推送到远程： git push -u origin master:dev  </p>
+<blockquote>
+<p>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;<br>-u：添加此参数后，以后推送使用git push即可</p>
+</blockquote>
+</li>
+<li><p>贮存本地修改：git stash</p>
+<blockquote>
+<p>贮存后本地就恢复到上一个提交状态，分支干净无任何修改</p>
+</blockquote>
+</li>
+<li><p>恢复本地修改：git stash pop</p>
+</li>
+</ol>
+<h2 id="标准开发git提交流程"><a href="#标准开发git提交流程" class="headerlink" title="标准开发git提交流程"></a>标准开发git提交流程</h2><ol>
+<li>贮存本地修改：git stash</li>
+<li>获取远程仓库代码到本地（不合并）： git fetch origin</li>
+<li>合并远程dev分支到本地分支：git rebase origin&#x2F;dev</li>
+<li>恢复本地修改：git stash pop<br> 4.1 若发生冲突，选择更改，然后 git add .</li>
+<li>提交代码：git commit -m “update file” </li>
+<li>git push origin master:dev</li>
+</ol>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js?v=1.0.1" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css?v=1.0.1"><p><span>发布时间: </span>2022-07-10  23:44:34</p><p><span>更新时间: </span>2022-07-10  23:44:15</p><p><span>本文链接: </span><a href="/2022/07/10/Tool/git操作/">http://example.com/2022/07/10/Tool/git%E6%93%8D%E4%BD%9C/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="http://example.com/2022/07/10/Tool/git%E6%93%8D%E4%BD%9C/"></i></span></p><p><span>版权声明: </span>本博客所有文章除特别声明外，均采用 CC BY-SA 4.0 协议 ，转载请注明出处！</p></div><br><div class="tags"><a href="/tags/git/">git</a></div><div class="post-nav"><a class="next" href="/2022/07/10/hello-world/">Hello World</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="toc-text">常见命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%BC%80%E5%8F%91git%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B"><span class="toc-text">标准开发git提交流程</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2022 <a href="/." rel="nofollow">Wyatt .</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/ThisisWyatt/hexo-maupassant"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.1" async></script><script type="text/javascript" src="//fastly.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.1" async></script><link rel="stylesheet" type="text/css" href="//fastly.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" color="255,193,37" opacity="0.7" zIndex="-1" count="120" src="//fastly.jsdelivr.net/npm/canvas-nest.js/dist/canvas-nest.min.js"></script><script type="text/javascript" src="/js/copycode.js?v=1.0.1" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.1"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.1"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.1"></script><script type="text/javascript" src="/js/prettify.js?v=1.0.1"></script><script>$(document).ready(function(){
+$('pre').addClass('prettyprint');
+//- $('code').addClass('prettyprint');
+prettyPrint();
+})</script><script type="text/javascript" src="/js/toc.js?v=1.0.1" async></script></div></body></html>

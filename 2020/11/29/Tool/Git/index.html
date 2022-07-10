@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Git | Dou</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.1"><link rel="stylesheet" type="text/css" href="//fastly.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//fastly.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//fastly.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//fastly.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//fastly.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="/css/prettify.css"><script type="text/javascript" src="//fastly.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//fastly.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//fastly.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 6.2.0"></head><script async src="https://www.googletagmanager.com/gtag/js?id=null"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', '');
+</script><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Git</h1><a id="logo" href="/.">Dou</a><p class="description">小屁豆儿的代码乐园</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user-secret"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"> <h1 class="post-title">Git</h1><div class="post-meta">November 2020</div><div class="post-content"><!-- git:
+    --- : 未修改（提交过的）
+    +++ : 修改过的  （未提交过的）
+-->
+
+<div align = "center">
+    <img src="https://i.loli.net/2020/11/30/3YAsCch1igVaWyU.png" alt="Git组成" width="66%"/>
+</div>
+
+
+<p>Git是一个免费、开源的开源分布式版本控制系统，它可以高效快速地处理大小项目。它易于学习、占用空间极小性能而又极为出色，超越了像Subversion、CVS、Perforce和ClearCase这样的SCM(soft configuration management)工具，具有像便宜的本地分支、方便的存储区域和多个工作流这样的特性。</p>
+<span id="more"></span>
+
+<h2 id="一、Git简介"><a href="#一、Git简介" class="headerlink" title="一、Git简介"></a>一、Git简介</h2><p>Git是一个<strong>分布式系统</strong>，即不同于集中式系统将所有的版本存放在中央服务器里，而是每一个设备上都是一个完整的版本库，这样做的好处不但使你不必依赖于互联网与中央服务器进行版本控制，而且即使一个设备损坏，只要在其他设备中存在你的项目，也不会造成你的数据丢失事故。</p>
+<blockquote>
+<p>当然在实际使用过程中，会选择一台设备作为“中央服务器”（例如github服务器），但这样只是为了有利于你的数据存储、携带以及团队之间的合作开发，并不是真正的中央服务器。</p>
+</blockquote>
+<h3 id="1-1-Git的构成"><a href="#1-1-Git的构成" class="headerlink" title="1.1 Git的构成"></a>1.1 Git的构成</h3><div align = "center">
+    <img src="https://i.loli.net/2020/11/29/aphYo63R7glfOQM.png" alt="Git结构" width="80%"/>
+</div>
+
+<blockquote>
+<p>workspace:工作区<br>index&#x2F;stage:暂存区<br>repository:本地仓库<br>remote:远程仓库   </p>
+</blockquote>
+<ol>
+<li>add:将文件从工作区添加到暂存区；</li>
+<li>commit:将文件从暂存区提交到本地仓库；</li>
+<li>push:将文件本地仓库同步到远程仓库；</li>
+<li>pull: <code>git fetch</code> 和 <code>git merge</code> 的简写，从远程仓库获取代码并合并本地的版本；</li>
+<li>fetch&#x2F;clone:<code>clone</code>将项目克隆到本地，<code>fetch</code>更新远程仓库文件到本地仓库；</li>
+<li>checkout:从版本库中恢复文件到工作区</li>
+</ol>
+<p>index和repository共同组成版本库（本地）</p>
+<h3 id="1-2-简单使用"><a href="#1-2-简单使用" class="headerlink" title="1.2 简单使用"></a>1.2 简单使用</h3><ul>
+<li>在当前目录下新建git仓库<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></li>
+<li>添加文件到暂存区中<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add fileName</span><br></pre></td></tr></table></figure></li>
+<li>提交文件到本地仓库中<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;commit information&quot;</span><br></pre></td></tr></table></figure></li>
+<li>推送本地仓库内容至远程仓库<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="二、版本控制"><a href="#二、版本控制" class="headerlink" title="二、版本控制"></a>二、版本控制</h2><p>利用Git我们可以对项目的文件进行存储、对文件的修改进行控制，是软件开发过程中必备的开发工具。   </p>
+<h3 id="2-1-差异比较"><a href="#2-1-差异比较" class="headerlink" title="2.1 差异比较"></a>2.1 差异比较</h3><p><strong>Git管理的是修改，而并非文件本身</strong>，我们可以利用<code>git status</code>我们可以比较workspace和index文件的差异，但是如何比较具体文件的差异时，我们需要用到<code>git diff</code> 命令</p>
+<ul>
+<li><code>git status</code>：比较workspace和index中的差异</li>
+<li><code>git diff (filename)</code>：比较workspace和index中文件的差异</li>
+<li><code>git diff --cached (filename)</code>、<code>git diff --staged (filename)</code>：比较index和上一次提交的差异</li>
+<li><code>git diff HEAD (filename)</code>：比较workspace和repository的差别<blockquote>
+<p>HEAD指向repository中最新的提交的版本</p>
+</blockquote>
+</li>
+<li><code>git diff --stat</code>：统计各个文件的具体变化情况worksapce和index</li>
+<li><code>git diff --numstat</code>：统计各个文件中变化的行数</li>
+</ul>
+<p><strong>git diff输出格式分析</strong><br>例如这里有一个文件gitDiffDemo.txt,有内容如下：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DragonBall1</span><br><span class="line">DragonBall2</span><br><span class="line">DragonBall3</span><br><span class="line">DragonBall4</span><br><span class="line">DragonBall5</span><br><span class="line">DragonBall6</span><br><span class="line">DragonBall7</span><br><span class="line">DragonBall8</span><br><span class="line">DragonBall9</span><br></pre></td></tr></table></figure>
+
+<p>将此文件提交至暂存区<code>$ git add gitDiffDemo.txt</code>后，将内容修改如下：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DragonBall1</span><br><span class="line">DragonBall2</span><br><span class="line">DragonBall3</span><br><span class="line">DragonBall4</span><br><span class="line">DragonBall5s </span><br><span class="line">DragonBall6</span><br><span class="line">DragonBall7</span><br><span class="line">DragonBall8</span><br><span class="line">DragonBall9 </span><br></pre></td></tr></table></figure>
+<p>此时使用<code>$ git diff gitDiffDemo.txt</code>查看异同：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git diff gitDiffDemo.txt </span><br><span class="line">diff --git a/gitDiffDemo.txt b/gitDiffDemo.txt</span><br><span class="line">index 9da8892..fa04dee 100644</span><br><span class="line">--- a/gitDiffDemo.txt</span><br><span class="line">+++ b/gitDiffDemo.txt</span><br><span class="line">@@ -2,7 +2,7 @@ DragonBall1</span><br><span class="line"> DragonBall2</span><br><span class="line"> DragonBall3</span><br><span class="line"> DragonBall4</span><br><span class="line">-DragonBall5 </span><br><span class="line">+DragonBall5s </span><br><span class="line"> DragonBall6</span><br><span class="line"> DragonBall7</span><br><span class="line"> DragonBall8</span><br></pre></td></tr></table></figure>
+
+<p>让我们来逐行来看输出内容</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index 9da8892..fa04dee 100644</span><br></pre></td></tr></table></figure>
+<p>9da8892..fa04dee表示暂存区具体文件（此处指当前文件夹下的gitDiffDemo.txt）的哈希值，100644表示对象模式，100表示普通文件(regular file)，644表示文件操作权限，即<code>rw-r--r--</code></p>
+<blockquote>
+<p>101: symbolic link 110: git link </p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--- a/gitDiffDemo.txt</span><br><span class="line">+++ b/gitDiffDemo.txt</span><br></pre></td></tr></table></figure>
+<p>--- 表示变化前的版本（提交过的）<br>+++ 表示变化后的版本（修改过的）</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@@ -2,7 +2,7 @@ DragonBall1</span><br></pre></td></tr></table></figure>
+<p>一对<code>@@</code>表示一个差异小结，一个差异小结的范围为<strong>变更位置上下3行</strong>，即一般为7行，上下行内容不足或两个差异点距离过近这个范围可能会缩小或变大。<br><code>-2,7</code>: 表示变化前的文件中，差异小结范围为第2行开始连续7行<br><code>+2,7</code>: 表示变化后的文件中，差异小结范围为第2行开始连续7行        </p>
+<p>“DragonBall1”内容为差异小结范围上一行，不用理会。 </p>
+<h3 id="2-2-快照Id"><a href="#2-2-快照Id" class="headerlink" title="2.2 快照Id"></a>2.2 快照Id</h3><p>在Git中，针对每一次commit都会生成相应的快照，即在Git系统中我们可以选择恢复某一个时间点上的版本快照以此达到版本控制的目的，使用<code>git log</code>命令查看commit历史</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">commit 7361c5145897d215c7bd9e9cf5a13c59f5908e7d</span><br><span class="line">Author: WyattWang &lt;cc7722@foxmail.com&gt;</span><br><span class="line">Date:   Sun Nov 29 20:14:41 2020 +0800</span><br><span class="line"></span><br><span class="line">    git tracks changes</span><br><span class="line"></span><br><span class="line">commit 4dbe0ff1cd9ade95b0ca83e22ac6dc27619b1cd9</span><br><span class="line">Author: WyattWang &lt;cc7722@foxmail.com&gt;</span><br><span class="line">Date:   Sun Nov 29 16:38:14 2020 +0800</span><br><span class="line"></span><br><span class="line">    append GPL</span><br><span class="line"></span><br><span class="line">commit 1076977642fedc84ef89be1a840850b991e434c7</span><br><span class="line">Author: WyattWang &lt;cc7722@foxmail.com&gt;</span><br><span class="line">Date:   Sun Nov 29 16:17:24 2020 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit a2fdd707b60ff78bada28410dc0ca8b6dd027e43</span><br><span class="line">Author: WyattWang &lt;cc7722@foxmail.com&gt;</span><br><span class="line">Date:   Sun Nov 29 14:11:51 2020 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如上所示，每一小段commit信息从上往下包含了commit id、提交者信息、commit时间和commit信息。<br>如果只是想查看commit id和commit信息，加上<code>--pretty=oneline</code>参数即可</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git log <span class="attr">--pretty</span>=<span class="literal">on</span>eline</span><br><span class="line">7361c5145897d215c7bd9e9cf5a13c59f5908e7d git tracks changes</span><br><span class="line">4dbe0ff1cd9ade95b0ca83e22ac6dc27619b1cd9 append GPL</span><br><span class="line">1076977642fedc84ef89be1a840850b991e434c7 add distributed</span><br><span class="line">a2fdd707b60ff78bada28410dc0ca8b6dd027e43 wrote a readme file</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-版本回退"><a href="#2-3-版本回退" class="headerlink" title="2.3 版本回退"></a>2.3 版本回退</h3><p>在Git中，<code>HEAD</code>表示当前版本，上一个版本为<code>HEAD^</code>或<code>HEAD~1</code>，上上一个版本为<code>HEAD^^</code>或<code>HEAD~2</code>，上上个版本为<code>HEAD^^^</code>或<code>HEAD~3</code>……</p>
+<p>使用<code>git reset</code>命令可以让版本进行回退, 例如回退到上一版本</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^ </span><br><span class="line">$ git reset --hard HEAD~1 </span><br></pre></td></tr></table></figure>
+<p>回退到指定commit id的版本</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard 4dbe0ff1cd9ade95b0ca83e22ac6dc27619b1cd9</span><br></pre></td></tr></table></figure>
+<p>如果从版本B回退到之前的版本A，在A之后的提交信息将会在git log中<strong>查询不到</strong>commit id,但是如果在当前命令行窗口还可以看到版本B的commit id，或者使用<code>git reflog</code>可以看到版本变动的过程及其id</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">cde5cd3 HEAD@&#123;0&#125;: reset: moving to cde5cd3cf18629fbc9d9f033447478b90355224c</span><br><span class="line">4dbe0ff HEAD@&#123;1&#125;: reset: moving to HEAD^^</span><br><span class="line">d5c7d80 HEAD@&#123;2&#125;: reset: moving to HEAD~1</span><br><span class="line">cde5cd3 HEAD@&#123;3&#125;: commit: 提交2</span><br><span class="line">d5c7d80 HEAD@&#123;4&#125;: commit: 提交</span><br><span class="line">7361c51 HEAD@&#123;5&#125;: commit: git tracks changes</span><br><span class="line">4dbe0ff HEAD@&#123;6&#125;: reset: moving to 4dbe0ff</span><br><span class="line">a2fdd70 HEAD@&#123;7&#125;: reset: moving to a2fdd70</span><br><span class="line">4dbe0ff HEAD@&#123;8&#125;: reset: moving to 4dbe0ff1cd9ade95b0ca83e22ac6dc27619b1cd9</span><br><span class="line">1076977 HEAD@&#123;9&#125;: reset: moving to HEAD^</span><br><span class="line">4dbe0ff HEAD@&#123;10&#125;: commit: append GPL</span><br><span class="line">1076977 HEAD@&#123;11&#125;: commit: add distributed</span><br><span class="line">a2fdd70 HEAD@&#123;12&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
+
+
+<p>在Git中除了使用<code>git reset</code>命令以外，还可以使用<code>git revert</code>命令来达到类似的的效果，但这两者还是有所区别：         </p>
+<ul>
+<li><code>git reset</code>是将版本<strong>回退</strong>到之前的版本，但那个版本之后的版本将不会被保留</li>
+<li><code>git revert</code>是将指定版本<strong>反做</strong>，例如按照时间线的版本为a-&gt;b-&gt;c, 当HEAD为版本c时反做版本b，即在提交版本b时，添加了file1.txt，则反做就是执行相反操作，删除file1.txt<blockquote>
+<p>如果<strong>在一个文件中</strong>多次修改内容并且进行提交，反做<strong>非最后一次提交</strong>时，会提示发生冲突，需要手动解决</p>
+</blockquote>
+</li>
+</ul>
+<p>➦<a target="_blank" rel="noopener" href="https://blog.csdn.net/yxlshk/article/details/79944535">Git恢复之前版本的两种方法reset、revert（图文详解）</a></p>
+<h3 id="2-4-撤销修改"><a href="#2-4-撤销修改" class="headerlink" title="2.4 撤销修改"></a>2.4 撤销修改</h3><p>如果需要<strong>撤销在workspace中的修改</strong>，可以使用<code>git checkout -- filename</code>命令(注意文件名前的空格)</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.md </span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果readme.md自修改后第一次放进index中，则git checkout后版本和repository中的版本是一致的</li>
+<li>如果readme.md之前放进过index中，则git checkout后版本和前一次添加到index中的版本保持一致</li>
+</ul>
+<p>即<code>git checkout</code>后的版本和最新的<code>git add</code>或<code>git commit</code>的文件保持一致<br><br></p>
+<p>如果需要<strong>撤销workspace添加到index中的修改</strong>，则可已使用<code>git reset HEAD filename</code>命令</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD readme.md</span><br></pre></td></tr></table></figure>
+<p><code>git reset</code>不仅可以回退版本，还可以回退index中的修改，即将repository中最新的版本<code>HEAD</code>替换掉index中修改过的文件。</p>
+<h3 id="2-5-删除文件"><a href="#2-5-删除文件" class="headerlink" title="2.5 删除文件"></a>2.5 删除文件</h3><p>如果工作区中的文件和版本库中的<strong>版本一致</strong>，使用<code>git rm &lt;filename&gt;</code>命令删除工作区文件，并且将这次删除放入暂存区</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git rm readme.md</span><br><span class="line">$ git commit -m &quot;rm readme.md&quot;</span><br></pre></td></tr></table></figure>
+
+<p>如果在workspace中修改过文件，无论有没有添加到index中，即<strong>工作区和版本库中文件版本不一致</strong>，单纯使用<code>git rm</code>命令会出现错误，此时需要加上参数<code>-f</code>，即使用<code>git rm -f &lt;filename&gt;</code>进行删除</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm -f readme.md</span><br></pre></td></tr></table></figure>
+
+<p>如果只是想删除版本库中的文件，<strong>但保留工作区文件</strong>，则使用<code>git rm --cached &lt;filename&gt;</code>可以删除暂存区文件，并将这次删除的操作添加到暂存区中，即此时该文件处于<em>untracked</em>状态</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached readme.md</span><br><span class="line">$ git commit -m &quot;untrack reame.md&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-修改历史commit中的Author和Email"><a href="#2-6-修改历史commit中的Author和Email" class="headerlink" title="2.6 修改历史commit中的Author和Email"></a>2.6 修改历史commit中的Author和Email</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git filter-branch -f --env-filter <span class="string">&quot;</span></span><br><span class="line"><span class="string">GIT_AUTHOR_NAME=&#x27;newName&#x27;;     </span></span><br><span class="line"><span class="string">GIT_AUTHOR_EMAIL=&#x27;newEmail@example.com&#x27;;          GIT_COMMITTER_NAME=&#x27;oldName&#x27;;           GIT_COMMITTER_EMAIL=&#x27;oldEmail@example.com&#x27;;</span></span><br><span class="line"><span class="string">&quot;</span> HEAD</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="三、远程仓库"><a href="#三、远程仓库" class="headerlink" title="三、远程仓库"></a>三、远程仓库</h2><p>虽然Git是一个<strong>分布式</strong>的版本控制工具，并不存在着中央服务器，但是在实际使用中还是存在一个远程仓库，方便用于同步代码或协同开发的。    </p>
+<h3 id="3-1-添加远程仓库"><a href="#3-1-添加远程仓库" class="headerlink" title="3.1 添加远程仓库"></a>3.1 添加远程仓库</h3><p>使用<code>git remote add &lt;仓库名称&gt; &lt;仓库地址&gt;</code>命令可以建立本地仓库和远程仓库的连接</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin git@github.com:server-name/learn-git.git</span><br></pre></td></tr></table></figure>
+<p>添加完成后可以使用<code>git remote -v</code>查看已关联的远程仓库信息</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin	git@gitee.com:server-name/learn-git.git (fetch)</span><br><span class="line">origin	git@gitee.com:server-name/learn-git.git (push)</span><br></pre></td></tr></table></figure>
+<p>以及可以使用<code>git remote rename &lt;old name&gt; &lt;new name&gt;</code>来更新远程仓库名称和使用<code>git remote remove &lt;name&gt;</code>来移除远程仓库名称</p>
+<h3 id="3-2-推送文件"><a href="#3-2-推送文件" class="headerlink" title="3.2 推送文件"></a>3.2 推送文件</h3><p>使用<code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code>命令可以推送本地仓库文件至远程仓库，特别的使用加上参数<code>-u</code>，可以给推送的分支加上（跟踪）引用，即使当前分子和多个远程主机存在关联，后面也可以不加任何参数使用git push推送到和本次相同的远程仓库中。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master <span class="comment">#第一次</span></span><br><span class="line">$ git push                  <span class="comment">#后续可简写</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果远程仓库地址为ssh url，则需要提前配置当前主机和远程主机的ssh公私钥</p>
+</blockquote>
+<p>特别的，使用<code>git push -f origin master</code>命令将本地文件推送到远程，并<strong>强制覆盖</strong>，使用时需要特别小心，<strong>谨慎使用</strong>。</p>
+<h3 id="3-3-代码克隆"><a href="#3-3-代码克隆" class="headerlink" title="3.3 代码克隆"></a>3.3 代码克隆</h3><p>使用<code>git clone &lt;远程仓库地址&gt;</code>命令可以将远程仓库的文件克隆到本地</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@gitee.com:server-name/learn-git.git</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>➱ <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ims-/p/9747333.html">https://www.cnblogs.com/ims-/p/9747333.html</a><br>➱ <a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html</a><br>➱ <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42780289/article/details/98353792">https://blog.csdn.net/qq_42780289/article/details/98353792</a></p>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js?v=1.0.1" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css?v=1.0.1"><p><span>发布时间: </span>2020-11-29  23:54:34</p><p><span>更新时间: </span>2022-07-10  18:38:01</p><p><span>本文链接: </span><a href="/2020/11/29/Tool/Git/">http://example.com/2020/11/29/Tool/Git/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="http://example.com/2020/11/29/Tool/Git/"></i></span></p><p><span>版权声明: </span>本博客所有文章除特别声明外，均采用 CC BY-SA 4.0 协议 ，转载请注明出处！</p></div><br><div class="tags"><a href="/tags/Tools/">Tools</a></div><div class="post-nav"><a class="pre" href="/2022/07/10/hello-world/">Hello World</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar-toc"><div class="stoc-article" id="sidebar-stoc"><strong class="stoc-title"><i class="fa fa-blind"> Contents </i></strong><div class="toc-nav" id="stoc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Git%E7%AE%80%E4%BB%8B"><span class="toc-text">一、Git简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Git%E7%9A%84%E6%9E%84%E6%88%90"><span class="toc-text">1.1 Git的构成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="toc-text">1.2 简单使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-text">二、版本控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%B7%AE%E5%BC%82%E6%AF%94%E8%BE%83"><span class="toc-text">2.1 差异比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%BF%AB%E7%85%A7Id"><span class="toc-text">2.2 快照Id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="toc-text">2.3 版本回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9"><span class="toc-text">2.4 撤销修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-text">2.5 删除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E4%BF%AE%E6%94%B9%E5%8E%86%E5%8F%B2commit%E4%B8%AD%E7%9A%84Author%E5%92%8CEmail"><span class="toc-text">2.6 修改历史commit中的Author和Email</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">三、远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">3.1 添加远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%8E%A8%E9%80%81%E6%96%87%E4%BB%B6"><span class="toc-text">3.2 推送文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%BB%A3%E7%A0%81%E5%85%8B%E9%9A%86"><span class="toc-text">3.3 代码克隆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2022 <a href="/." rel="nofollow">Wyatt .</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/ThisisWyatt/hexo-maupassant"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.1" async></script><script type="text/javascript" src="//fastly.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.1" async></script><link rel="stylesheet" type="text/css" href="//fastly.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" color="255,193,37" opacity="0.7" zIndex="-1" count="120" src="//fastly.jsdelivr.net/npm/canvas-nest.js/dist/canvas-nest.min.js"></script><script type="text/javascript" src="/js/copycode.js?v=1.0.1" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.1"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.1"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.1"></script><script type="text/javascript" src="/js/prettify.js?v=1.0.1"></script><script>$(document).ready(function(){
+$('pre').addClass('prettyprint');
+//- $('code').addClass('prettyprint');
+prettyPrint();
+})</script><script type="text/javascript" src="/js/toc.js?v=1.0.1" async></script></div></body></html>
